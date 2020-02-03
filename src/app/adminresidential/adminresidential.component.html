@@ -1,0 +1,55 @@
+<h1>Residential Dashoard</h1>
+
+<div>
+
+    <h3>Order Details for Residential</h3>
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Address</th>
+                <th scope="col">Date</th>
+                <th scope="col">Number Of Bottles</th>
+                <th scope="col">Price</th>
+
+            </tr>
+        </thead>
+        <tbody *ngFor="let i of OrderDetails">
+            <tr>
+
+                <td>{{i.Name}}</td>
+                <td>{{i.Address}}</td>
+                <td>{{i.Date}}</td>
+                <td>{{i.NumberOfBottels}}</td>
+                <td>{{i.Price}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div>
+
+    <h3>History : Order Details for Residential</h3>
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Address</th>
+                <th scope="col">Date</th>
+                <th scope="col">Number Of Bottles</th>
+                <th scope="col">Price</th>
+
+            </tr>
+        </thead>
+        <tbody *ngFor="let i of HistoryOrderDetails">
+            <tr>
+
+                <td>{{i.Name}}</td>
+                <td>{{i.Address}}</td>
+                <td>{{i.Date}}</td>
+                <td>{{i.NumberOfBottels}}</td>
+                <td>{{i.Price}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,21 @@
+<app-nav></app-nav>
+<div class="login-page">
+    <div class="form">
+
+        <form class="login-form" #form="ngForm" (submit)="login(form)">
+            <div class="form-group">
+                <label for="Username"></label>
+                <input required ngModel name="username" #username="ngModel" placeholder="Username" id="Username" type="text" class="form-control">
+                <div class="alert alert-danger" *ngIf="username.touched && !username.valid">Required</div>
+            </div>
+
+            <div class="form-group">
+                <label for="Password"></label>
+                <input required ngModel name="password" #password="ngModel" placeholder="Password" type="password" id="Password" class="form-control">
+                <div class="alert alert-danger" *ngIf="password.touched && !password.valid">Required</div>
+            </div>
+            <button type="submit" [disabled]="!form.form.valid">login</button>
+
+        </form>
+
+    </div>

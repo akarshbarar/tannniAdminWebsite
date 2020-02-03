@@ -1,0 +1,140 @@
+<h1>Commercial Dashoard</h1>
+<form class="login-form" #form="ngForm" (submit)="addCommercial(form)">
+    <div class="card mb-3">
+        <h5 class="card-title">Fill Detials for Corporate Data</h5>
+        <div class="card-body">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Number Of bottles and Price</span>
+                </div>
+                <input type="text" aria-label="First name" class="form-control" required ngModel name="NuberOfBottles" #NuberOfBottles="ngModel">
+                <div class="alert alert-danger" *ngIf="NuberOfBottles.touched && !NuberOfBottles.valid">Required</div>
+
+                <input type="text" aria-label="Last name" class="form-control" required ngModel name="Price" #Price="ngModel">
+                <div class="alert alert-danger" *ngIf="Price.touched && !Price.valid">Required</div>
+
+            </div>
+            <button type="submit" class="btn btn-primary" [disabled]="!form.form.valid">Add</button>
+        </div>
+    </div>
+
+</form>
+
+
+<div>
+    Table of all the Key Value pair will be here
+    <div class="wrapper">
+
+        <div class="table" data-spy="scroll" data-target="#navbar-example2" data-offset="0">
+
+            <div class="row header">
+                <div class="cell">
+                    Number Of Bottels
+                </div>
+                <div class="cell">
+                    Price
+                </div>
+                <div class="cell" data-title="Age">
+                    Action
+                </div>
+            </div>
+
+            <div class="row" *ngFor="let i of CommercialItem">
+                <div class="cell" data-title="Name">
+                    {{i.NumberOfBottles}}
+                </div>
+                <div class="cell" data-title="Age">
+                    {{i.Price}}
+                </div>
+                <div class="cell" data-title="Age">
+                    <button type="button" class="btn btn-danger" (click)="deleteItemCommercial(i)">Delete</button>
+                    <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Update</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">UPDATE</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                     <span aria-hidden="true">&times;</span>
+                     </button>
+
+                </div>
+
+                <form class="login-form" #updateForm="ngForm" (submit)="updateCommercial()">
+                    <div class="modal-body">
+
+                        <div class="form-group">
+                            <label for="Number Of Bottle" class="col-form-label">Number Of Bottle:</label>
+                            <input type="number" (input)="NumberOfBottleToBeUpdated=$event.target.value" class="form-control" id="numberOfBottles">
+                        </div>
+                        <div class="form-group">
+                            <label for="Price" class="col-form-label">Price:</label>
+                            <input type="number" (input)="PriceToBeUpdated=$event.target.value" class="form-control" id="price">
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">UPDATE</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+
+    <h3>Order Details for Commercial</h3>
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Address</th>
+                <th scope="col">Date</th>
+                <th scope="col">Number Of Bottles</th>
+                <th scope="col">Price</th>
+
+            </tr>
+        </thead>
+        <tbody *ngFor="let i of CommercialOrderDetails">
+            <tr>
+
+                <td>{{i.Name}}</td>
+                <td>{{i.Address}}</td>
+                <td>{{i.Date}}</td>
+                <td>{{i.NumberOfBottels}}</td>
+                <td>{{i.Price}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div>
+
+    <h3>History : Order Details for Commercial</h3>
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Address</th>
+                <th scope="col">Date</th>
+                <th scope="col">Number Of Bottles</th>
+                <th scope="col">Price</th>
+
+            </tr>
+        </thead>
+        <tbody *ngFor="let i of HistoryOrderDetails">
+            <tr>
+
+                <td>{{i.Name}}</td>
+                <td>{{i.Address}}</td>
+                <td>{{i.Date}}</td>
+                <td>{{i.NumberOfBottels}}</td>
+                <td>{{i.Price}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
